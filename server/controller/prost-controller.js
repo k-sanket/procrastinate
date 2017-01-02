@@ -1,6 +1,8 @@
 var mongoose = require("mongoose");
 var Prost = require('../datasets/prosts');
 
+
+// Posting tweets
 module.exports.postProst = function(req,res){
 
     var newProst = new Prost();
@@ -32,7 +34,7 @@ module.exports.postProst = function(req,res){
     });
 }
 
-
+// Getting tweets
 module.exports.getProst = function(req,res){
   Prost.find({}).where("content").ne(null).sort({date:-1}).exec(function(err,prosts){
       if(err){

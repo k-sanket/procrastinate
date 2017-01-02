@@ -1,4 +1,6 @@
 (function(){
+
+    // Assigning routes
     var application = angular.module("procrast",['ui.router','ngFileUpload'])
                               .config(function($stateProvider,$urlRouterProvider){
 

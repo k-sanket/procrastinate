@@ -1,8 +1,11 @@
 (function(){
+    // Setting up routes
     var application = angular.module("procrast",['ui.router','ngFileUpload'])
                               .config(function($stateProvider,$urlRouterProvider){
 
+                                // if any other url visited , redirect to home
                                 $urlRouterProvider.otherwise = '/';
+
                                 $stateProvider.state('signUp',{
                                     url : "/signup",
                                     templateUrl : "app/signup/signup.html",
@@ -28,6 +31,8 @@
             //  console.log($scope.user);
             }
 
+
+            // On pressing enter key posting tweets
             $scope.postProst = function(event){
               if(event.which == 13){
                   var request = {
@@ -52,6 +57,8 @@
                     $scope.shownewprost = false;
                     $scope.procrast = response;
                   }else{
+
+                    // if tweets are posted while you are reading , show x tweets posted with a link
                     if(response.data.length > $scope.procrast.data.length){
                       $scope.shownewprost = true;
                       $scope.newprocrast = response;
@@ -95,7 +102,7 @@
          $scope.upload($scope.file);
       })
 
-      // var data =
+      // Upload function to uplaod image for a user
 
 
       $scope.upload = function(file){
@@ -114,6 +121,7 @@
           });
         }
       };
+      // Update user name when user enters his name
 
       $scope.updateUserName = function(){
           var request = {
@@ -129,7 +137,7 @@
           });
       };
 
-
+      // Update user bio information
 
      $scope.updateBioInformation = function(){
        var request = {
@@ -182,7 +190,7 @@
 ;(function(){
   // testing grunt
   angular.module('procrast').controller('SignupController',['$scope','$state','$http',function($scope,$state,$http){
-      $scope.createUser = function(){   
+      $scope.createUser = function(){
         $http.post('api/user/signup',$scope.newUser).then(function(response){
           console.log(response);
         }).catch(function(error){

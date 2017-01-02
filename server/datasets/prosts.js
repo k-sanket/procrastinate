@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
+// Setting document for a Prost collection
 var Procrasts = new Schema({
     user : {
       username : String,

@@ -1,5 +1,7 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
+
+// Setting document for UserDetails collection
 var UserDetails = new Schema({
   email : {
     type :  String,
